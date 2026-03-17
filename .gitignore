@@ -1,0 +1,5 @@
+t.txt
+.env
+__pycache__
+.venv
+original.py
