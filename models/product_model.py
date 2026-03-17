@@ -25,3 +25,42 @@ class ProductModel:
             'create',
             [producto]
         )
+    
+    # Listar todos los productos creados
+    def listar_todos_productos(self, campos):
+        return self.models.execute_kw(
+            self.db,
+            self.uid,
+            self.password,
+            'product.template',
+            'search_read',
+            [[]],
+            {
+                'fields': campos
+            }
+        )
+    
+    # Borrar un producto por ID
+    def borrar_producto_por_id(self, id):
+        return self.models.execute_kw(
+            self.db,
+            self.uid,
+            self.password,
+            'product.template',
+            'unlink',
+            [[id]]
+        )
+    
+    # Buscar por un nombre específico
+    def buscar_por_nombre(self, nombre, campos):
+        return self.models.execute_kw(
+            self.db,
+            self.uid,
+            self.password,
+            'product.template',
+            'search_read',
+            [[nombre]],
+            {
+                'fields': campos
+            }
+        )

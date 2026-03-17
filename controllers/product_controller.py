@@ -1,5 +1,6 @@
 import os
 import csv
+import json
 
 from models.product_model import ProductModel
 from views.product_view import ProductView
@@ -41,3 +42,30 @@ class ProductController:
 
                 product_id = self.model.crear_producto(product)
                 self.view.mostrar_mensaje(f'Producto creado: {product['name']} | Producto ID: {product_id}')
+
+    # Listar todos los productos
+    def list_all_products(self):
+        campos = ['name', 'default_code', 'barcode', 'list_price', 'standard_price', 'type', 'categ_id', 'purchase_ok', 'sale_ok']
+        productos = self.model.listar_todos_productos(campos)
+
+        for producto in productos:
+            producto_con_formato = json.dumps(producto, indent=4, sort_keys=True)
+            print(producto_con_formato)
+
+    # Borrar un producto por ID
+    def delete_a_product_by_id(self, id):
+        borrado = self.model.borrar_producto_por_id(id)
+
+        if borrado:
+            self.view.mostrar_mensaje(f'Producto con ID: {id} ha sido borrado con éxito')
+        else:
+            self.view.mostrar_error(f'No se puedo borrar el producto con ID: {id}')
+
+    # Mostrar detalles de un producto por nombre
+    def search_product_by_name(self, name):
+        campos = ['name', 'default_code', 'barcode', 'list_price', 'standard_price', 'type', 'categ_id', 'purchase_ok', 'sale_ok']
+        productos = self.model.buscar_por_nombre(name, campos)
+
+        for producto in productos:
+            producto_con_formato = json.dumps(producto, indent=4, sort_keys=True)
+            print(producto_con_formato)
