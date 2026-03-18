@@ -1,5 +1,7 @@
 import xmlrpc.client
 
+from utils.image_util import encode_img_to_base64
+
 class ProductModel:
     # Constructor
     def __init__(self, cfg):
@@ -34,9 +36,9 @@ class ProductModel:
             self.password,
             'product.template',
             'search_read',
-            [[]],
+            [[('name', 'not like', 'DUA VAT%')]],
             {
-                'fields': campos
+                'fields': campos,
             }
         )
     
@@ -59,7 +61,36 @@ class ProductModel:
             self.password,
             'product.template',
             'search_read',
-            [[nombre]],
+            [[['name', '=', nombre]]],
+            {
+                'fields': campos,
+            }
+        )
+    
+    # Actualizar imagen de un producto
+    def actualizar_imagen(self, id, nueva_imagen):
+        return self.models.execute_kw(
+            self.db,
+            self.uid,
+            self.password,
+            'product.template',
+            'write',
+            [[id],
+                {
+                    'image_1920': encode_img_to_base64(nueva_imagen)
+                }
+            ],
+        )
+
+    # Obtener solo ciertos campos
+    def listar_solo_algunos_campos(self, campos):
+        return self.models.execute_kw(
+            self.db,
+            self.uid,
+            self.password,
+            'product.template',
+            'search_read',
+            [[('name', 'not like', 'DUA VAT%')]],
             {
                 'fields': campos
             }

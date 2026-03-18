@@ -69,3 +69,21 @@ class ProductController:
         for producto in productos:
             producto_con_formato = json.dumps(producto, indent=4, sort_keys=True)
             print(producto_con_formato)
+
+    # Actualizar imagen de un producto
+    def update_product_image(self, id, path_to_image):
+        actualizado = self.model.actualizar_imagen(id, path_to_image)
+
+        if actualizado:
+            self.view.mostrar_mensaje(f'Producto con ID: {id} actualizado con éxito')
+        else:
+            self.view.mostrar_error(f'No se puedo actualizar el producto con ID: {id}')
+
+    # Obtener solo ciertos campos
+    def list_some_fields(self):
+        campos = ['name', 'list_price', 'default_code']
+        productos = self.model.listar_todos_productos(campos)
+
+        for producto in productos:
+            producto_con_formato = json.dumps(producto, indent=4, sort_keys=True)
+            print(producto_con_formato)
