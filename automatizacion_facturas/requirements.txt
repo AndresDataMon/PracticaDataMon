@@ -1,0 +1,36 @@
+# Dependencias
+# Compatibilidad: Python 3.13 en Windows, macOS y Linux.
+
+# GOOGLE GMAIL API 
+google-auth>=2.29.0
+google-auth-oauthlib>=1.2.0
+google-auth-httplib2>=0.2.0
+google-api-python-client>=2.131.0
+
+# GOOGLE GEMINI AI 
+google-genai>=1.0.0
+
+# PROCESAMIENTO DE PDF
+pymupdf>=1.25.0
+pypdf>=4.0.0
+
+# VALIDACIÓN Y CONFIGURACIÓN
+pydantic>=2.10.0
+pydantic-settings>=2.7.0
+python-dotenv>=1.0.1
+
+# COLA DE TAREAS
+celery>=5.3.6
+redis>=5.0.4
+
+# REGISTRO 
+loguru>=0.7.2
+
+# UTILIDADES 
+tenacity>=8.3.0
+python-dateutil>=2.9.0
+requests>=2.31.0
+
+# PRUEBAS 
+pytest>=8.2.0
+pytest-mock>=3.14.0

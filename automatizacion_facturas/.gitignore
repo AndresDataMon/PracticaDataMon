@@ -1,0 +1,31 @@
+# Secretos y credenciales
+.env
+config/credenciales.json
+config/token.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Entornos virtuales
+venv/
+.venv/
+env/
+
+# Datos y registros generados en ejecución
+logs/
+data/auditoria.db
+data/examples/*.pdf
+
+# IDEs
+.idea/
+.vscode/
+.DS_Store
+
+# Tests
+.pytest_cache/
+.coverage
+htmlcov/

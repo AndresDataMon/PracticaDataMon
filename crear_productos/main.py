@@ -38,7 +38,6 @@ def main():
                 nombre_producto = input('Introduce el nombre del producto a buscar: ')
                 controller.search_product_by_name(nombre_producto)
 
-
             case 5:
                 imagen = input('Nueva imagen (camiseta.jpg ó camiseta2.jpg): ')
                 nueva_imagen = image_folder + "/" + imagen
